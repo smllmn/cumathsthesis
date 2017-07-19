@@ -13,15 +13,8 @@
 \usepackage[backend=biber,style=authoryear]{biblatex}
 \addbibresource{includes/bibliography.bib}
 
-% the following if block changes some settings depending on whether this is a draft or not
-% in particular, by default it sets drafts in single-spacing and final copies in the required
-% 1.5 or double spacing
-\ifdraftdoc
-    %do nothing
-\else
-    \OnehalfSpacing                 % unfortunately, theses must be at least 1.5 spaced
-    % \DoubleSpacing                 % if double spacing is insisted upon
-\fi
+\OnehalfSpacing                 % unfortunately, theses must be at least 1.5 spaced
+% \DoubleSpacing                 % if double spacing is insisted upon
 
 \usepackage{charter}            % I like the Charter font
 \usepackage[charter]{mathdesign}% I prefer these maths symbols (which are designed to harmonise
