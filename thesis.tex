@@ -1,0 +1,55 @@
+\documentclass[
+    a4paper,        % paper size
+    11pt,           % default font size
+    twoside,        % set printing options to twosided
+    onecolumn,      % text should be printed in one column
+    openright,      % chapters start on recto pages
+    draft
+]{memoir}
+
+\input{includes/preamble.tex}
+
+\begin{document}
+
+\frontmatter
+
+\subfile{includes/title.tex}
+\cleardoublepage % this is actually superfluous with the abstract (in abstract.tex) as a chapter
+                 % and the openright option selected, but it is included in case you wish to
+                 % change to using memoir's abstract environment
+
+\subfile{abstract.tex}
+
+\subfile{includes/declarations.tex}
+\cleardoublepage    % this one isn't superfluous -- as the dedication isn't set as a chapter,
+                    % it would otherwise be set on the back of the declarations page, which is
+                    % ugly in my opinion
+
+\subfile{includes/dedication.tex}
+
+\subfile{includes/acknowledgements.tex}
+\cleardoublepage    % this one also isn't superfluous, even then the table of contents is 
+                    % basically set as an anonymous chapter *shrug*
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\mainmatter
+% hereafter begins the meat of the thesis
+
+\subfile{chapter1.tex}
+
+\appendix
+
+\subfile{appendix1.tex}
+
+\backmatter
+\printbibliography
+
+\end{document}

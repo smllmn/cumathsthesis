@@ -1,0 +1,65 @@
+\usepackage[english]{babel}     % proper hyphenation, amongst other things
+\usepackage[T1]{fontenc}        % 8-bit output encoding
+\usepackage[utf8]{inputenc}     % 8-bit input encoding
+
+\usepackage{subfiles}           % allows each chapter to be its own seperate, individually
+                                % compileable file
+
+\usepackage[final]{graphicx}    % provides \includegraphics
+                                % final option provided to override global "draft" argument
+                                % and always print figures. if you want to produce a version
+                                % with only dummy figures, remove the final option
+
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{includes/bibliography.bib}
+
+% the following if block changes some settings depending on whether this is a draft or not
+% in particular, by default it sets drafts in single-spacing and final copies in the required
+% 1.5 or double spacing
+\ifdraftdoc
+    %do nothing
+\else
+    \OnehalfSpacing                 % unfortunately, theses must be at least 1.5 spaced
+    % \DoubleSpacing                 % if double spacing is insisted upon
+\fi
+
+\usepackage{charter}            % I like the Charter font
+\usepackage[charter]{mathdesign}% I prefer these maths symbols (which are designed to harmonise
+                                % with the Charter font
+
+\usepackage{lipsum}
+
+\newcommand*{\signatureblock}{%
+    % setup a a signature block for the declarations page
+\begin{tabular}{@{}lp{50mm}@{}llp{20mm}}
+    Signed & \hrule & (candidate) & Date & \hrule\\
+\end{tabular}
+}
+
+% here I define a chapter style for the document. it is based on the "dash" style
+% provided by memoir. in fact, it first sets the chapterstyle to dash to import
+% its settings, then changes what I didn't like (mostly font sizes)
+\makeatletter
+\makechapterstyle{fauxdash}{%
+    \chapterstyle{dash}
+    \setlength{\beforechapskip}{2\onelineskip}
+    \renewcommand*{\chapnumfont}{\normalfont\LARGE}
+    \renewcommand*{\printchapternum}{\centering \chapnumfont 
+        \rule[0.5\midchapskip]{1em}{0.4pt} \@chapapp{} \thechapter\ 
+        \rule[0.5\midchapskip]{1em}{0.4pt}
+    }
+    \renewcommand*{\chaptitlefont}{\normalfont\Huge}
+}
+\makeatother
+
+\chapterstyle{fauxdash}
+
+\pagestyle{headings}
+\nouppercaseheads
+\makepagestyle{chapter}
+\makeoddhead{chapter}{}{}{\thepage}
+
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\epigraphposition{center}
+\epigraphfontsize{\small\itshape}

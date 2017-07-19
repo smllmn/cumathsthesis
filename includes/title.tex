@@ -1,0 +1,31 @@
+\documentclass[../thesis.tex]{subfiles}
+
+\begin{document}
+    % in order to centre the title block visually, it has to be wrapped in an adjustwidth
+    % environment which shifts the entire textblock to a centred block on the page. then
+    % the usual latex \centering or center environment work as expected. without the adjustwidth
+    % the title block would be centred in a textblock which is *not* centred on the page
+\thispagestyle{empty} % we don't want page numbers on our titlepage
+\calccentering{\unitlength}
+\begin{adjustwidth*}{\unitlength}{-\unitlength}
+\centering
+\vspace*{0.1\textheight} % drop 10% of the height from the top
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%               YOU MUST MODIFY THE FOLLOWING THREE LINES               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\HUGE Thesis Title Across Two \\[0.35em] Entire Lines}\\[\baselineskip]
+{\LARGE The Author}\\[\baselineskip]
+{\LARGE 20XX}\\[\baselineskip]
+\vfill      % fill any remaining vertical space between title/author/year and the logo
+\begin{tabular}{cc}
+    % the raisebox is necessary to have the image vertically centred with respect to
+    % the text
+    % the image is given a width of 30mm to comply with CU branding guidelines
+    \raisebox{-0.5\totalheight}{\includegraphics[width=30mm]{images/culogo.eps}} &
+    % the nested tabular environment with @-expressions is required to allow for
+    % linebreaks within a tabular cell
+    \begin{tabular}[c]{@{}c@{}}\LARGE School of Mathematics\\ \LARGE Ysgol Mathemateg\end{tabular}
+\end{tabular}
+\vspace*{0.1\textheight} % leave 10% of pageblock empty at bottom
+\end{adjustwidth*}
+\end{document}
